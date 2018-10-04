@@ -1,9 +1,10 @@
-package malanii.petro.chat
+package malanii.petro.chat.Controller
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import malanii.petro.chat.R
 
 class LoginActivity : AppCompatActivity() {
 
