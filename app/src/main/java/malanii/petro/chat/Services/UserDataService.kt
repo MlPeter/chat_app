@@ -1,6 +1,7 @@
 package malanii.petro.chat.Services
 
 import android.graphics.Color
+import malanii.petro.chat.Controller.App
 import java.util.*
 
 object UserDataService {
@@ -17,9 +18,12 @@ object UserDataService {
         avatarName = ""
         email = ""
         name = ""
-        AuthService.authToken = ""
-        AuthService.userEmail = ""
-        AuthService.isLoggedIn = false
+        App.prefs.authToken = ""
+        App.prefs.userEmail = ""
+        App.prefs.isLoggedIn = false
+        MessageService.clearMessages()
+        MessageService.clearChannels()
+
     }
 
     fun returnAvatarColor(components: String) :Int{

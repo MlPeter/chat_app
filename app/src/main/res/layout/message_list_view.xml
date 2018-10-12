@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/messageUserImage"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@drawable/dark16" />
+
+    <TextView
+        android:id="@+id/messageUerNameLbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@+id/messageUserImage"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Peter" />
+
+    <TextView
+        android:id="@+id/timeStampLbl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@+id/messageUerNameLbl"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Oct 10, 11:30 PM" />
+
+    <TextView
+        android:id="@+id/messageBodyLbl"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/messageUserImage"
+        app:layout_constraintTop_toBottomOf="@+id/timeStampLbl"
+        tools:text="It’s strongly recommended to use one of the other installation methods if possible.  This installation method does not autoupdate and requires you to use your system’s version of Node.js, which may be older than the version Heroku develops the CLI against. Heroku uses very current releases of Node.js and does not back-support older versions.  If you use any of the other installation methods the proper version of Node.js is already included, and it doesn’t conflict with any other version on your system.  Also, this method won’t use the yarn lockfile for dependencies like the others do (even if you install with yarn). This may cause issues if the CLI’s dependencies become incompatible in minor or patch releases." />
+</android.support.constraint.ConstraintLayout>
