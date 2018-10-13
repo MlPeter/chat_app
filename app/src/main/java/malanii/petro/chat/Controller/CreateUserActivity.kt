@@ -31,7 +31,7 @@ class CreateUserActivity : AppCompatActivity() {
         val avatar = random.nextInt(28)
 
         if (color == 0){
-            userAvatar = "ligth$avatar"
+            userAvatar = "light$avatar"
         }else {
             userAvatar = "dark$avatar"
         }
