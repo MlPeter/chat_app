@@ -1,7 +1,6 @@
 package malanii.petro.chat.Screens
 
 import android.support.test.espresso.Espresso
-
 import android.support.test.espresso.ViewInteraction
 import android.support.test.espresso.action.ViewActions.click
 import android.support.test.espresso.matcher.ViewMatchers

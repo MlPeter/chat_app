@@ -7,7 +7,7 @@ import android.support.test.espresso.matcher.ViewMatchers.withId
 import malanii.petro.chat.Controller.App
 import malanii.petro.chat.R
 
-class UserMainScreen {
+class NavigationMainScreen {
 
     private val loginLogoutBtn: ViewInteraction
         get() = onView(withId(R.id.loginBtnNavHeader))
@@ -21,7 +21,7 @@ class UserMainScreen {
         }
     }
 
-    fun clickOnLogoutBtn() {
+    fun tapOnLogoutBtn() {
         if (App.prefs.isLoggedIn) {
             loginLogoutBtn.perform(click())
         }else {
