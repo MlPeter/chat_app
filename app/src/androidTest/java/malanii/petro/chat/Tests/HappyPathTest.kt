@@ -21,7 +21,6 @@ class HappyPathTest {
     @JvmField
     var mActivityTestRule = ActivityTestRule(MainActivity::class.java)
 
-
     val validLogin = "q@q.com"
     val validPassword = "123456"
 
