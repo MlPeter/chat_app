@@ -3,9 +3,10 @@ package malanii.petro.chat.Tests
 import android.support.test.filters.LargeTest
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
+import malanii.petro.chat.Controller.App
 import malanii.petro.chat.Controller.MainActivity
-import malanii.petro.chat.Screens.LoginActivity
-import malanii.petro.chat.Screens.OpenNavigationDrawer
+import malanii.petro.chat.Screens.MainScreen
+import malanii.petro.chat.Screens.UserMainScreen
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -19,16 +20,22 @@ class HappyPath {
     var mActivityTestRule = ActivityTestRule(MainActivity::class.java)
 
 
-@Test
-    fun happyPath(){
     val validLogin = "q@q.com"
     val validPassword = "123456"
 
-    val navDrawer = OpenNavigationDrawer()
-    navDrawer.openNavigationDrawer()
+    @Test
+    fun happyPath() {
 
-    val login = LoginActivity()
-    login.login(validLogin,validPassword)
+        val mainScreen = MainScreen()
+        mainScreen.clickOnNavigationDrawer()
 
-}
+        val userMainScreen = UserMainScreen()
+        userMainScreen.clickOnLogoutBtn()
+
+
+
+
+
+
+    }
 }

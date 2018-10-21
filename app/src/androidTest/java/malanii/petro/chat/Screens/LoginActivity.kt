@@ -10,10 +10,7 @@ import malanii.petro.chat.R
 
 class LoginActivity {
 
-   private val validLogin = "q@q.com"
-   private val validPassword = "123456"
-
-    private fun logout(){
+    fun logout(){
         onView(ViewMatchers.withId(R.id.loginBtnNavHeader))
                 .perform(ViewActions.click())
     }
@@ -24,26 +21,35 @@ class LoginActivity {
         if (App.prefs.isLoggedIn) {
             Espresso.onView(ViewMatchers.withId(R.id.loginBtnNavHeader))
                     .perform(ViewActions.click())
+
             Espresso.onView(ViewMatchers.withId(R.id.loginBtnNavHeader))
                     .perform(ViewActions.click())
+
             Espresso.onView(ViewMatchers.withId(R.id.loginEmailText))
                     .perform(ViewActions.replaceText(email))
+
             Espresso.onView(ViewMatchers.withId(R.id.loginPasswordText))
                     .perform(ViewActions.replaceText(password))
+
             Espresso.onView(ViewMatchers.withId(R.id.loginLoginBtn))
                     .perform(ViewActions.click())
+
             Thread.sleep(2000)
             logout()
 
         } else {
             Espresso.onView(ViewMatchers.withId(R.id.loginBtnNavHeader))
                     .perform(ViewActions.click())
+
             Espresso.onView(ViewMatchers.withId(R.id.loginEmailText))
                     .perform(ViewActions.replaceText(email))
+
             Espresso.onView(ViewMatchers.withId(R.id.loginPasswordText))
                     .perform(ViewActions.replaceText(password))
+
             Espresso.onView(ViewMatchers.withId(R.id.loginLoginBtn))
                     .perform(ViewActions.click())
+
             Thread.sleep(2000)
             logout()
         }
