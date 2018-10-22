@@ -6,7 +6,6 @@ import android.support.test.runner.AndroidJUnit4
 import malanii.petro.chat.Controller.MainActivity
 import malanii.petro.chat.Screens.LoginScreen
 import malanii.petro.chat.Screens.MainScreen
-import malanii.petro.chat.Screens.NavigationMainScreen
 import malanii.petro.chat.Screens.UserNavigationScreen
 import org.junit.Rule
 import org.junit.Test
@@ -30,15 +29,14 @@ class HappyPathTest {
         val mainScreen = MainScreen()
         mainScreen.clickOnNavigationDrawer()
 
-        val userMainScreen = NavigationMainScreen()
-        userMainScreen.clickOnLoginBtn()
+        val userNavigationScreen = UserNavigationScreen()
+        userNavigationScreen.clickOnLoginBtn()
 
         val loginScreen = LoginScreen()
         loginScreen.enter(validLogin, validPassword)
         loginScreen.tapOnLoginBtn()
         sleep(2000)
 
-        val userNavigationScreen = UserNavigationScreen()
         userNavigationScreen.userInfoIsDisplayed
 
     }
