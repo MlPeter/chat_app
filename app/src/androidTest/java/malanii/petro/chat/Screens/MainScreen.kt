@@ -30,7 +30,8 @@ class MainScreen : BaseScreen(){
         uniqueView.check(matches(isDisplayed()))
     }
 
-    fun clickOnNavigationDrawer(){
+    fun clickOnNavigationDrawer() : UserNavigationScreen {
         openNavigationDrawerBtn.perform(click())
+        return UserNavigationScreen()
     }
 }

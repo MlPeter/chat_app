@@ -88,7 +88,7 @@ class CreateUserActivity : AppCompatActivity() {
                 }
             }
         } else {
-            Toast.makeText(this, "Make sure user name, email, and password are filled in ",
+            Toast.makeText(this, "Make sure user name, email, and password are filled in",
                     Toast.LENGTH_LONG).show()
             enableSpinner(false)
         }

@@ -20,20 +20,18 @@ class HappyPathTest {
     @JvmField
     var mActivityTestRule = ActivityTestRule(MainActivity::class.java)
 
-    val validLogin = "q@q.com"
+    val validEmail = "q@q.com"
     val validPassword = "123456"
 
     @Test
     fun happyPath() {
 
         val mainScreen = MainScreen()
-        mainScreen.clickOnNavigationDrawer()
-
-        val userNavigationScreen = UserNavigationScreen()
+        val userNavigationScreen = mainScreen.clickOnNavigationDrawer()
         userNavigationScreen.clickOnLoginBtn()
 
         val loginScreen = LoginScreen()
-        loginScreen.enter(validLogin, validPassword)
+        loginScreen.enter(validEmail, validPassword)
         loginScreen.tapOnLoginBtn()
         sleep(2000)
 

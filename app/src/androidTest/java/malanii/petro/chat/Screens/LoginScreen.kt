@@ -21,6 +21,9 @@ class LoginScreen : BaseScreen(){
     private val loginBtn: ViewInteraction
         get() = onView(withId(R.id.loginLoginBtn))
 
+    private val signUpHereBtn: ViewInteraction
+        get() = onView(withId(R.id.loginCreateUserBtn))
+
     override val uniqueView: ViewInteraction
         get() = loginBtn
 
@@ -35,5 +38,10 @@ class LoginScreen : BaseScreen(){
 
     fun tapOnLoginBtn(){
         loginBtn.perform(click())
+    }
+
+    fun tapOnSignUoHereBtn() : CreateUserScreen {
+        signUpHereBtn.perform(click())
+        return CreateUserScreen()
     }
 }

@@ -26,21 +26,21 @@ class ErrorsTests {
     @JvmField
     var mActivityTestRule = ActivityTestRule(MainActivity::class.java)
 
-    val validLogin = "q@q.com"
-    val emptyLogin = ""
+    val validemail = "q@q.com"
+    val emptyEmail = ""
     val invalidPassword = "111111"
     val emptyPassword = ""
+    val newUserName = "test"
+    val newPassword = "123456"
 
     @Test
     fun invalidEmailTest(){
         val mainScreen = MainScreen()
-        mainScreen.clickOnNavigationDrawer()
-
-        val userNavigationScreen = UserNavigationScreen()
+        val userNavigationScreen = mainScreen.clickOnNavigationDrawer()
         userNavigationScreen.clickOnLoginBtn()
 
         val loginScreen = LoginScreen()
-        loginScreen.enter(validLogin, invalidPassword)
+        loginScreen.enter(validemail, invalidPassword)
         loginScreen.tapOnLoginBtn()
         sleep(3500)
         onView(
@@ -52,17 +52,51 @@ class ErrorsTests {
     @Test
     fun emptyEmailAndPasswordFieldsTest(){
         val mainScreen = MainScreen()
-        mainScreen.clickOnNavigationDrawer()
-
-        val userNavigationScreen = UserNavigationScreen()
+        val userNavigationScreen = mainScreen.clickOnNavigationDrawer()
         userNavigationScreen.clickOnLoginBtn()
 
         val loginScreen = LoginScreen()
-        loginScreen.enter(emptyLogin, emptyPassword)
+        loginScreen.enter(emptyEmail, emptyPassword)
         loginScreen.tapOnLoginBtn()
         onView(
                 allOf(withContentDescription(
                         "Please fill in both email and password"),
+                        isDisplayed()))
+    }
+
+    @Test
+    fun createUserWithSameEmail(){
+        val mainScreen = MainScreen()
+        val userNavigationScreen = mainScreen.clickOnNavigationDrawer()
+        userNavigationScreen.clickOnLoginBtn()
+
+        val loginScreen = LoginScreen()
+        val createUserScreen = loginScreen.tapOnSignUoHereBtn()
+        createUserScreen.enterNewUser(newUserName, validemail, newPassword)
+        createUserScreen.tapOnGenerateUserAvatarBtn()
+        createUserScreen.tapOnGenerateBackgroundColorBtn()
+        createUserScreen.tapOnCreateUserBtn()
+        onView(
+                allOf(withContentDescription(
+                        "Something went wrong, please try again"),
+                        isDisplayed()))
+    }
+
+    @Test
+    fun createUserWithEmptyPasswordField(){
+        val mainScreen = MainScreen()
+        val userNavigationScreen = mainScreen.clickOnNavigationDrawer()
+        userNavigationScreen.clickOnLoginBtn()
+
+        val loginScreen = LoginScreen()
+        val createUserScreen = loginScreen.tapOnSignUoHereBtn()
+        createUserScreen.enterNewUser(newUserName, validemail, emptyPassword)
+        createUserScreen.tapOnGenerateUserAvatarBtn()
+        createUserScreen.tapOnGenerateBackgroundColorBtn()
+        createUserScreen.tapOnCreateUserBtn()
+        onView(
+                allOf(withContentDescription(
+                        "Make sure user name, email, and password are filled in"),
                         isDisplayed()))
     }
 }
