@@ -8,7 +8,6 @@ import android.support.test.runner.AndroidJUnit4
 import malanii.petro.chat.Controller.MainActivity
 import malanii.petro.chat.Screens.LoginScreen
 import malanii.petro.chat.Screens.MainScreen
-import malanii.petro.chat.Screens.UserNavigationScreen
 import org.hamcrest.Matchers.allOf
 import org.junit.Rule
 import org.junit.Test
@@ -26,7 +25,7 @@ class ErrorsTests {
     @JvmField
     var mActivityTestRule = ActivityTestRule(MainActivity::class.java)
 
-    val validemail = "q@q.com"
+    val validEmail = "q@q.com"
     val emptyEmail = ""
     val invalidPassword = "111111"
     val emptyPassword = ""
@@ -40,7 +39,7 @@ class ErrorsTests {
         userNavigationScreen.clickOnLoginBtn()
 
         val loginScreen = LoginScreen()
-        loginScreen.enter(validemail, invalidPassword)
+        loginScreen.enter(validEmail, invalidPassword)
         loginScreen.tapOnLoginBtn()
         sleep(3500)
         onView(
@@ -72,7 +71,7 @@ class ErrorsTests {
 
         val loginScreen = LoginScreen()
         val createUserScreen = loginScreen.tapOnSignUoHereBtn()
-        createUserScreen.enterNewUser(newUserName, validemail, newPassword)
+        createUserScreen.enterNewUser(newUserName, validEmail, newPassword)
         createUserScreen.tapOnGenerateUserAvatarBtn()
         createUserScreen.tapOnGenerateBackgroundColorBtn()
         createUserScreen.tapOnCreateUserBtn()
@@ -90,7 +89,7 @@ class ErrorsTests {
 
         val loginScreen = LoginScreen()
         val createUserScreen = loginScreen.tapOnSignUoHereBtn()
-        createUserScreen.enterNewUser(newUserName, validemail, emptyPassword)
+        createUserScreen.enterNewUser(newUserName, validEmail, emptyPassword)
         createUserScreen.tapOnGenerateUserAvatarBtn()
         createUserScreen.tapOnGenerateBackgroundColorBtn()
         createUserScreen.tapOnCreateUserBtn()
