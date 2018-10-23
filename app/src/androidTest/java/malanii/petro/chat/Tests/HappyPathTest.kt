@@ -36,6 +36,5 @@ class HappyPathTest {
         sleep(2000)
 
         userNavigationScreen.userInfoIsDisplayed
-
     }
 }
