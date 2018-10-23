@@ -22,6 +22,9 @@ class UserNavigationScreen : BaseScreen() {
     val channelIsAdded: ViewInteraction
         get() = onView(allOf(withId(R.id.channel_list), withText("TEST!")))
 
+    val userIsLogout: ViewInteraction
+        get() = onView(allOf(withId(R.id.linearLayout), withText("Login")))
+
     private val addChannelBtn: ViewInteraction
         get() = onView(withId(R.id.addChannelBtn))
 
@@ -37,10 +40,10 @@ class UserNavigationScreen : BaseScreen() {
 
     fun clickOnLoginBtn() {
         if (App.prefs.isLoggedIn) {
-            loginLogoutBtn.perform(ViewActions.click())
-            loginLogoutBtn.perform(ViewActions.click())
+            loginLogoutBtn.perform(click())
+            loginLogoutBtn.perform(click())
         } else {
-            loginLogoutBtn.perform(ViewActions.click())
+            loginLogoutBtn.perform(click())
         }
     }
 
