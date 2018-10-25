@@ -30,7 +30,6 @@ class HappyPathTest {
         val loginScreen = LoginScreen()
         loginScreen.enter(validEmail, validPassword)
         loginScreen.tapOnLoginBtn()
-        sleep(2000)
 
         userNavigationScreen.userInfoIsDisplayed
     }

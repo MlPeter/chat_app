@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.test.espresso.IdlingRegistry
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
@@ -12,6 +13,8 @@ import malanii.petro.chat.R
 import malanii.petro.chat.Services.AuthService
 
 class LoginActivity : AppCompatActivity() {
+
+    val idling = AuthService.countingIdlingResource
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,17 +29,21 @@ class LoginActivity : AppCompatActivity() {
         hideKeyboard()
 
         if (email.isNotEmpty() && password.isNotEmpty()){
+            IdlingRegistry.getInstance().register(idling)
             AuthService.loginUser(email, password) {loginSuccess ->
                 if (loginSuccess){
                     AuthService.findUserByEmail(this) {findSuccess ->
                         if (findSuccess) {
+                            IdlingRegistry.getInstance().unregister(idling)
                             enableSpinner(false)
                             finish()
                         } else {
+                            IdlingRegistry.getInstance().unregister(idling)
                             errorToast()
                         }
                     }
                 } else {
+                    IdlingRegistry.getInstance().unregister(idling)
                     errorToast()
                 }
             }

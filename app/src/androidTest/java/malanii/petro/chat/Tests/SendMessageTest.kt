@@ -25,8 +25,6 @@ class SendMessageTest {
         val messageScreen = MessagesScreen()
         messageScreen.enterMessage()
         messageScreen.tapOnSendMessageBtn()
-        sleep(1000)
         messageScreen.messageIsSent
-        sleep(1000)
     }
 }

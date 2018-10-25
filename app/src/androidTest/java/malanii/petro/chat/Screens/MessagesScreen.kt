@@ -3,8 +3,7 @@ package malanii.petro.chat.Screens
 import android.support.test.espresso.Espresso
 import android.support.test.espresso.Espresso.onView
 import android.support.test.espresso.ViewInteraction
-import android.support.test.espresso.action.ViewActions.click
-import android.support.test.espresso.action.ViewActions.replaceText
+import android.support.test.espresso.action.ViewActions.*
 import android.support.test.espresso.matcher.ViewMatchers
 import android.support.test.espresso.matcher.ViewMatchers.withId
 import malanii.petro.chat.R
@@ -19,11 +18,12 @@ class MessagesScreen {
         get() = onView(withId(R.id.sendMessageBtn))
 
     fun enterMessage(){
-        messageField.perform(replaceText("Hello"))
+        messageField.perform(typeText("Hello"))
         Espresso.closeSoftKeyboard()
     }
 
     fun tapOnSendMessageBtn(){
+        sendMessageBtn.perform(click())
         sendMessageBtn.perform(click())
     }
 
