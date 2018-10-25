@@ -1,7 +1,7 @@
 # Chat
 It's an example project for Android Studio using Kotlin to demonstrate Espresso tests. It also includes typical unit tests using JUnit4. All codes are written in Kotlin
 
-To run an Espresso test, use the Project  window on the left side of the Android Studio IDE:
+# To run an Espresso test, use the Project  window on the left side of the Android Studio IDE:
 
 Open the chat app module folder and navigate to the test you want to run. 
 
