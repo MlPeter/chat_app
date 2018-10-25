@@ -1,1 +1,2 @@
-"# chat_app" 
+# Chat 
+Demo app for the Espresso test
