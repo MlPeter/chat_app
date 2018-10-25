@@ -2,6 +2,7 @@ package malanii.petro.chat.Services
 
 import android.content.Context
 import android.content.Intent
+import android.support.test.espresso.idling.CountingIdlingResource
 import android.support.v4.content.LocalBroadcastManager
 import android.util.Log
 import com.android.volley.Response
@@ -17,17 +18,21 @@ import org.json.JSONObject
 
 object AuthService {
 
-    fun registerUser(email: String, password: String, complete: (Boolean) -> Unit) {
+    val countingIdlingResource = CountingIdlingResource("chatApp idling")
 
+    fun registerUser(email: String, password: String, complete: (Boolean) -> Unit) {
+        countingIdlingResource.increment()
         val jsonBody = JSONObject()
         jsonBody.put("email", email)
         jsonBody.put("password", password)
         val requestBody = jsonBody.toString()
 
         val registerRequest = object : StringRequest(Method.POST, URL_REGISTER, Response.Listener { response ->
+            countingIdlingResource.decrement()
             println(response)
             complete(true)
         }, Response.ErrorListener { error ->
+            countingIdlingResource.decrement()
             Log.d("ERROR", "Could not register user:$error")
             complete(false)
         }) {
@@ -44,12 +49,15 @@ object AuthService {
     }
 
     fun loginUser(email: String, password: String, complete: (Boolean) -> Unit) {
+        countingIdlingResource.increment()
+
         val jsonBody = JSONObject()
         jsonBody.put("email", email)
         jsonBody.put("password", password)
         val requestBody = jsonBody.toString()
 
         val loginRequest = object : JsonObjectRequest(Method.POST, URL_LOGIN, null, Response.Listener { response ->
+            countingIdlingResource.decrement()
 
             try {
                 App.prefs.userEmail = response.getString("user")
@@ -62,6 +70,7 @@ object AuthService {
             }
 
         }, Response.ErrorListener { error ->
+            countingIdlingResource.decrement()
             Log.d("ERROR", "Could not login user:$error")
             complete(false)
         }) {
@@ -78,6 +87,7 @@ object AuthService {
     }
 
     fun createUser(name: String, email: String, avatarName: String, avatarColor: String, complete: (Boolean) -> Unit) {
+        countingIdlingResource.increment()
 
         val jsonBody = JSONObject()
         jsonBody.put("name", name)
@@ -87,6 +97,7 @@ object AuthService {
         val requestBody = jsonBody.toString()
 
         val createRequest = object : JsonObjectRequest(Method.POST, URL_CREATE_USER, null, Response.Listener { response ->
+            countingIdlingResource.decrement()
 
             try {
 
@@ -103,6 +114,7 @@ object AuthService {
             }
 
         }, Response.ErrorListener {error ->
+            countingIdlingResource.decrement()
             Log.d("ERROR", "Could not add user:$error")
             complete(false)
         }) {
@@ -124,7 +136,9 @@ object AuthService {
     }
 
     fun findUserByEmail(context: Context, complete: (Boolean) -> Unit){
+        countingIdlingResource.increment()
         val findUserRequest = object : JsonObjectRequest(Method.GET, "$URL_GET_USER${App.prefs.userEmail}", null, Response.Listener { response ->
+            countingIdlingResource.decrement()
             try {
                 UserDataService.name = response.getString("name")
                 UserDataService.email = response.getString("email")
@@ -140,6 +154,7 @@ object AuthService {
                 Log.d("JSON", "EXC" + e.localizedMessage)
             }
         }, Response.ErrorListener {error ->
+            countingIdlingResource.decrement()
             Log.d("ERROR", "Could not find user")
             complete(false)
 

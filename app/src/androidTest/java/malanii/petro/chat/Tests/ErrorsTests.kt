@@ -41,7 +41,6 @@ class ErrorsTests {
         val loginScreen = LoginScreen()
         loginScreen.enter(validEmail, invalidPassword)
         loginScreen.tapOnLoginBtn()
-        sleep(3500)
         onView(
                 allOf(withContentDescription(
                         "Something went wrong, please try again"),

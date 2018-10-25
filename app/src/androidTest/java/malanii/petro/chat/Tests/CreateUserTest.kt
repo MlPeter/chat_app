@@ -9,6 +9,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import java.lang.Thread.sleep
+import java.util.*
 
 @RunWith(AndroidJUnit4::class)
 class CreateUserTest {
@@ -16,8 +17,10 @@ class CreateUserTest {
     @JvmField
     var mActivityTestRule = ActivityTestRule(MainActivity::class.java)
 
-    val newEmail = "test@test.com"
-    val newUserName = "test"
+    val random = Random().nextInt(70000-1)
+
+    val newEmail = "test${random}@test.com"
+    val newUserName = "test${random}"
     val newPassword = "123456"
 
     @Test
@@ -32,7 +35,6 @@ class CreateUserTest {
         createUserScreen.tapOnGenerateUserAvatarBtn()
         createUserScreen.tapOnGenerateBackgroundColorBtn()
         createUserScreen.tapOnCreateUserBtn()
-        sleep(2000)
 
         userNavigationScreen.userInfoIsDisplayed
     }
