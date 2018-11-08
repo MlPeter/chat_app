@@ -6,7 +6,7 @@ To run an Espresso test, use the Project  window on the left side of the Android
 
 Open the chat app module folder and navigate to the test you want to run. 
 
-Navigate to java > malanii.petro.chat (androidTest).
+Navigate to java > ...chat (androidTest).
 
 Right-click on the test you want to run and click Run.
 
