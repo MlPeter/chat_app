@@ -1,5 +1,5 @@
 # Chat
-It's an example project for Android Studio using Kotlin to demonstrate Espresso tests. It also includes typical unit tests using JUnit4. All codes are written in Kotlin
+This is demo app for demonstrating different frameworks and techniques for automated testing. It contains test automation framework with Espresso library while using scalable architecture POM to retrieve text actions. Also, for increasing efficiency of test exicusion I used  Espresso Idling Resources to Deal with asynchronous operations. All codes are written in Kotlin
 
 # Espresso test
 To run an Espresso test, use the Project  window on the left side of the Android Studio IDE:
